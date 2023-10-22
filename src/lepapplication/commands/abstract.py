@@ -8,9 +8,9 @@ class __CommandAbstract(ABC):
 
 
 class Command(__CommandAbstract):
-    name: str
+    name: str | None
 
-    def __init__(self, name: str) -> None:
+    def __init__(self, name: str | None = None) -> None:
         super().__init__()
         self.name = name
 
