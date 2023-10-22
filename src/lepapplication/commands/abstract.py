@@ -25,7 +25,9 @@ class CompoundCommand(Command):
     def command(self, **data) -> list[str]:
         args: list[str] = []
         for command in self.commands:
-            args.append(";")
-            args.extend(command.command(**data))
+            args_current = command.command(**data)
+            if len(args_current) > 0:
+                args.extend(args_current)
+                args.append(";")
 
         return args
