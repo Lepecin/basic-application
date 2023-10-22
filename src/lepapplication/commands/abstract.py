@@ -3,11 +3,7 @@ from abc import abstractmethod, ABC
 
 class __CommandAbstract(ABC):
     @abstractmethod
-    def args(self) -> list[str]:
-        pass
-
-    @abstractmethod
-    def paramters(self, **data):
+    def command(self, **data) -> list[str]:
         pass
 
 
