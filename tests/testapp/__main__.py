@@ -1,5 +1,5 @@
-from ...src.lepapplication.application import App
-from ...src.lepapplication.commands import (
+from lepapplication import App, get_args
+from lepapplication.commands.test import (
     TestOneCommand,
     TestTwoCommand,
     TestThreeCommand,
@@ -11,7 +11,8 @@ app = App(
     TestTwoCommand("two"),
     TestThreeCommand("three"),
 )
+app.get_metadata()
 
-app.get_metadata(greeting="hello", shell=True)
 
-app("three").run(message="yo", farewell="bye")
+option, data = get_args()
+app(option).run(**data)
