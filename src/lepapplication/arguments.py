@@ -10,7 +10,10 @@ def get_args() -> tuple[str, dict[str, str]]:
         help="The command to execute.",
     )
 
-    option, unknown = parser.parse_known_args()
+    method, unknown = parser.parse_known_args()
+    command = method.command
+
+    parser = argparse.ArgumentParser()
 
     for arg in unknown:
         if arg.startswith(("-", "--")):
@@ -21,4 +24,4 @@ def get_args() -> tuple[str, dict[str, str]]:
 
     data = parser.parse_args(unknown).__dict__
 
-    return option, data
+    return command, data
