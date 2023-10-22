@@ -1,6 +1,4 @@
-from .abstract import Command
-from .test import (
-    TestOneCommand,
-    TestTwoCommand,
-    TestThreeCommand,
+from .abstract import (
+    Command,
+    CompoundCommand,
 )
