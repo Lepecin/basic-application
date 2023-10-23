@@ -1,9 +1,10 @@
 from abc import abstractmethod, ABC
+from .cmd import Script
 
 
 class __CommandAbstract(ABC):
     @abstractmethod
-    def command(self, **data) -> list[str]:
+    def command(self, **data) -> Script:
         pass
 
 
@@ -22,12 +23,5 @@ class CompoundCommand(Command):
         self.commands = list(commands)
         return self
 
-    def command(self, **data) -> list[str]:
-        args: list[str] = []
-        for command in self.commands:
-            args_current = command.command(**data)
-            if len(args_current) > 0:
-                args.extend(args_current)
-                args.append(";")
-
-        return args
+    def command(self, **data) -> Script:
+        return sum((command.command(**data) for command in self.commands), [])
