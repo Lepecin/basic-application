@@ -1,4 +1,4 @@
-from .abstract import Command, CompoundCommand
+from lepapplication import Command, CompoundCommand
 
 
 class TestOneCommand(Command):

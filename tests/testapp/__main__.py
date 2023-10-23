@@ -1,9 +1,8 @@
-from lepapplication import App, get_args
-from lepapplication.commands.test import (
+from lepapplication import App, get_args, Command
+from .test import (
     TestOneCommand,
     TestTwoCommand,
     TestThreeCommand,
-    Command,
 )
 
 
