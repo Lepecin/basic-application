@@ -13,7 +13,7 @@ class App:
     List of command objects that can be dispatched by the app.
     """
 
-    metadata: dict[str]
+    metadata: dict[str, str]
     """
     Dictionary of metadata to be used in the app.
     """
@@ -21,7 +21,7 @@ class App:
     def __init__(self, *commands: Command) -> None:
         self.commands = list(commands)
 
-    def get_metadata(self, **metadata):
+    def get_metadata(self, **metadata: str):
         self.metadata = metadata
 
     def command_dict(self) -> dict[str, Command]:
@@ -47,7 +47,7 @@ class CommandInterface:
     Command for which interface is made.
     """
 
-    metadata: dict[str]
+    metadata: dict[str, str]
     """
     Metadata used to overide input data to the interface.
     """
@@ -59,7 +59,7 @@ class CommandInterface:
         self.metadata = metadata
         return self
 
-    def run(self, **data):
+    def run(self, **data: str):
         """
         Run the command with the kwargs provided to it.
 
@@ -68,9 +68,7 @@ class CommandInterface:
 
         data.update(self.metadata)
 
-        args = self.command.command(**data)
+        script = self.command.command(**data)
 
-        if len(args) > 0:
-            subprocess.run(args=args)
-        else:
-            print("No subprocess executed")
+        for cmd in script:
+            subprocess.run(cmd())
