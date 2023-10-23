@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "lepecinapplication"
-version = "0.0.1"
+version = "0.0.2"
 authors = [{ name = "Ivan Silajev", email = "evantrulife@gmail.com" }]
 description = "Package for creating a simple Python based CLI app."
 readme = "README.md"
@@ -16,4 +16,4 @@ classifiers = [
 ]
 
 [project.urls]
-# "Homepage" = ""
+"Homepage" = "https://github.com/Lepecin/basic-application"
